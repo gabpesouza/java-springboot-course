@@ -3,6 +3,11 @@ package com.udemy.coursespringboot.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity(name = "Teste")
 public class User implements Serializable {
 	
 	/**
@@ -11,6 +16,8 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String phone;
 	private String password;
