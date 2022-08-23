@@ -1,13 +1,18 @@
 package com.udemy.coursespringboot.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-@Entity(name = "Teste")
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+@Entity(name = "tb_user")
 public class User implements Serializable {
 	
 	/**
@@ -21,6 +26,9 @@ public class User implements Serializable {
 	private Long id;
 	private String phone;
 	private String password;
+	@JsonIgnore
+	@OneToMany(mappedBy = "client")
+	private List<Order> orders = new ArrayList<>();
 	
 	public User(String name, String email, Long id, String phone, String password) {
 		this.name = name;
@@ -91,6 +99,9 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
+	public List<Order> getOrders() {
+		return orders;
+	}
 	
 	
 	
