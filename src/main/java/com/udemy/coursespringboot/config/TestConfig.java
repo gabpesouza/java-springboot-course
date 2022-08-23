@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.udemy.coursespringboot.entities.Category;
 import com.udemy.coursespringboot.entities.Order;
+import com.udemy.coursespringboot.entities.Product;
 import com.udemy.coursespringboot.entities.User;
 import com.udemy.coursespringboot.entities.enums.OrderStatus;
 import com.udemy.coursespringboot.repositories.CategoryRepository;
 import com.udemy.coursespringboot.repositories.OrderRepository;
+import com.udemy.coursespringboot.repositories.ProductRepository;
 import com.udemy.coursespringboot.repositories.UserRepository;
 
 @Configuration
@@ -26,7 +28,11 @@ public class TestConfig implements CommandLineRunner {  //Classe seeding do repo
 	private OrderRepository order;
 	@Autowired
 	private CategoryRepository category;
-
+	@Autowired
+	private ProductRepository product;
+	
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
 		User u1 = new User("Paulo", "paulo@gmail",null, "9999", "123");
@@ -40,10 +46,18 @@ public class TestConfig implements CommandLineRunner {  //Classe seeding do repo
 		Category c2 = new Category(null, "Computer");
 		Category c3 = new Category(null, "Books");
 		
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, ""); 
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, ""); 
+		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, ""); 
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
+		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+
+		
 		
 		user.saveAll(Arrays.asList(u1,u2));
 		order.saveAll(Arrays.asList(o1,o2,o3));
 		category.saveAll(Arrays.asList(c1,c2,c3));
+		product.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
 		
 		

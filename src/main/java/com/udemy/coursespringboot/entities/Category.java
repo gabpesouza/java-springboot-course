@@ -1,18 +1,28 @@
 package com.udemy.coursespringboot.entities;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity(name = "tb_category" )
-public class Category {
+public class Category implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	@Transient
+	private Set<Product> products = new HashSet<>();
 	
 	public Category(Long id, String nome) {
 		this.id = id;
@@ -56,6 +66,9 @@ public class Category {
 		this.nome = nome;
 	}
 	
+	public Set<Product> getProducts() {
+		return products;
+	}
 	
 	
 	
