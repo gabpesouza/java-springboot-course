@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.udemy.coursespringboot.entities.enums.OrderStatus;
 @Entity(name = "tb_user")
 public class User implements Serializable {
 	
@@ -29,6 +30,7 @@ public class User implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
+	
 	
 	public User(String name, String email, Long id, String phone, String password) {
 		this.name = name;
