@@ -59,6 +59,14 @@ public class TestConfig implements CommandLineRunner {  //Classe seeding do repo
 		category.saveAll(Arrays.asList(c1,c2,c3));
 		product.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
+		p1.getCategories().add(c3);
+		p2.getCategories().add(c1);
+		p3.getCategories().add(c2);
+		p4.getCategories().add(c2);
+		p5.getCategories().add(c3);
+		
+		product.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
 		
 		
 	}

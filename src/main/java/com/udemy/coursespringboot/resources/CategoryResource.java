@@ -13,7 +13,7 @@ import com.udemy.coursespringboot.entities.Category;
 import com.udemy.coursespringboot.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/categories")
 public class CategoryResource {
 	@Autowired
 	private CategoryService categoryService;

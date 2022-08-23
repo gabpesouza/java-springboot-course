@@ -13,7 +13,7 @@ import com.udemy.coursespringboot.entities.Product;
 import com.udemy.coursespringboot.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/product")
+@RequestMapping(value = "/products")
 public class ProductResource {
 	@Autowired
 	private ProductService ProductService;
