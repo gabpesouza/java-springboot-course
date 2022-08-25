@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.udemy.coursespringboot.entities.Category;
 import com.udemy.coursespringboot.entities.Order;
 import com.udemy.coursespringboot.entities.OrderItem;
+import com.udemy.coursespringboot.entities.Payment;
 import com.udemy.coursespringboot.entities.Product;
 import com.udemy.coursespringboot.entities.User;
 import com.udemy.coursespringboot.entities.enums.OrderStatus;
@@ -78,6 +79,11 @@ public class TestConfig implements CommandLineRunner {  //Classe seeding do repo
 		
 	
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+		
+		Payment payment = new Payment(null,Instant.parse("2009-05-23T18:50:30Z"),o1);
+		o1.setPayment(payment);
+		
+		order.save(o1);
 		
 		
 		
