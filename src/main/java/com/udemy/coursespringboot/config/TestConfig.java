@@ -40,8 +40,8 @@ public class TestConfig implements CommandLineRunner {  //Classe seeding do repo
 	
 	@Override
 	public void run(String... args) throws Exception {
-		User u1 = new User("Paulo", "paulo@gmail",null, "9999", "123");
-		User u2 = new User("Saulo", "saulo@gmail",null, "8888", "321");
+		User u1 = new User(null,"Paulo", "paulo@gmail", "9999", "123");
+		User u2 = new User(null,"Saulo", "saulo@gmail", "8888", "321");
 		
 		Order o1 = new Order(null, Instant.parse("2009-05-23T16:50:30Z"),OrderStatus.CANCELED, u2);
 		Order o2 = new Order(null,Instant.parse("2009-04-10T18:20:20Z"),OrderStatus.DELIVERED,u2);
