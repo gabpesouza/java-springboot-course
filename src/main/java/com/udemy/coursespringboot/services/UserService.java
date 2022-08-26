@@ -3,6 +3,8 @@ package com.udemy.coursespringboot.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -44,9 +46,13 @@ public class UserService {
 	}
 	
 	public User update(Long id, User obj) {
+		try {
 		User entity = findById(id);
 		updateData(entity,obj);
 		return userRepository.save(entity);
+		}catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 		
 		
 	}
