@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.udemy.coursespringboot.services.exceptions.DataBaseException;
 import com.udemy.coursespringboot.services.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -20,5 +21,13 @@ public class ResourceExceptionHandler {
 		StandardError se = new StandardError(Instant.now(), http.value(),error, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(http).body(se);
 	}
+	@ExceptionHandler(DataBaseException.class)
+	public ResponseEntity<StandardError> dataBase(DataBaseException e, HttpServletRequest request){
+		String error = "Database error";
+		HttpStatus http = HttpStatus.BAD_REQUEST;
+		StandardError se = new StandardError(Instant.now(), http.value(),error, e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(http).body(se);
+	}
+
 	
 }
